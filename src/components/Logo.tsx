@@ -154,7 +154,7 @@ export const Logo: React.FC<LogoProps> = ({
           <span className={`${s.text} font-black tracking-tight text-amber-600`}>
             EXPORT
           </span>
-          <span className={`mx-1 ${s.text} font-black tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+          <span className={`mx-1 ${s.text} font-black tracking-tight ${isDark ? "text-white" : "text-[#1d2d3e]"}`}>
             INDIA
           </span>
           <span className={`${s.text} font-black tracking-tight ${isDark ? "text-emerald-400" : "text-emerald-700"}`}>

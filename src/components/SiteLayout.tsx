@@ -41,7 +41,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 font-sans selection:bg-slate-200">
+    <div className="flex min-h-screen flex-col bg-[#070707] text-[#f4f4f4] font-sans selection:bg-white selection:text-black">
       {/* 1. Quiet Utility Bar */}
       <div className="bg-slate-900 text-slate-300 border-b border-slate-800">
         <div className="mx-auto flex max-w-7xl flex-col gap-1.5 px-4 py-2 text-xs sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6 lg:px-8">
@@ -87,13 +87,13 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
       </div>
 
       {/* 2. Top Bar Contract: Zone 1 (Brand) - Zone 2 (4-5 Nav Links) - Zone 3 (1 Action) */}
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8">
           <Link to="/" className="min-w-0 shrink" onClick={() => setMobileMenuOpen(false)}>
-            <Logo size="md" variant="full" theme="light" />
+            <Logo size="md" variant="full" theme="dark" />
           </Link>
 
-          <nav className="hidden min-w-0 items-center gap-4 text-sm font-medium text-slate-600 xl:flex xl:gap-6">
+          <nav className="hidden min-w-0 items-center gap-4 text-sm font-medium text-white/70 xl:flex xl:gap-6">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -102,8 +102,8 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
                   to={link.href}
                   className={`whitespace-nowrap shrink-0 transition-colors py-1 ${
                     active
-                      ? "text-slate-900 font-semibold border-b-2 border-slate-900"
-                      : "hover:text-slate-900"
+                      ? "text-white font-semibold border-b-2 border-white"
+                      : "hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -112,11 +112,10 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
             })}
           </nav>
 
-          {/* Zone 3: 1 Primary Action */}
           <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/contact"
-              className="hidden items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-xs transition-colors hover:bg-slate-800 md:inline-flex"
+              className="sap-btn hidden whitespace-nowrap md:inline-flex"
             >
               Request Trade Proposal
             </Link>
@@ -124,7 +123,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 xl:hidden"
+              className="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white hover:bg-white/10 xl:hidden"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -132,9 +131,8 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="border-b border-slate-200 bg-white px-4 pt-2 pb-6 xl:hidden">
+          <div className="border-b border-white/10 bg-[#070707] px-4 pt-2 pb-6 xl:hidden">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
@@ -145,20 +143,20 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                       active
-                        ? "bg-slate-100 text-slate-900 font-semibold"
-                        : "text-slate-700 hover:bg-slate-50"
+                        ? "bg-white/10 text-white font-semibold"
+                        : "text-white/75 hover:bg-white/5"
                     }`}
                   >
                     <span>{link.label}</span>
-                    <ChevronRight className="size-4 text-slate-400" />
+                    <ChevronRight className="size-4 text-white/40" />
                   </Link>
                 );
               })}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex flex-col gap-2">
+              <div className="mt-4 pt-3 border-t border-white/10 flex flex-col gap-2">
                 <Link
                   to="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg bg-slate-900 text-white font-semibold text-xs tracking-wide uppercase"
+                  className="sap-btn w-full"
                 >
                   Request Trade Proposal
                 </Link>
@@ -301,16 +299,16 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
       {/* Quick Inquiry Modal */}
       {quickInquiryOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111111] p-6 sm:p-8 border border-white/10">
+            <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
               <div>
-                <h3 className="text-lg font-bold font-heading text-slate-900">Commercial Sourcing Proposal</h3>
-                <p className="text-xs text-slate-500 font-mono">Export Desk · Rajkot, Gujarat</p>
+                <h3 className="text-lg font-bold font-heading text-white">Commercial Sourcing Proposal</h3>
+                <p className="text-xs text-white/50 font-mono">Export Desk · Rajkot, Gujarat</p>
               </div>
               <button
                 type="button"
                 onClick={() => setQuickInquiryOpen(false)}
-                className="size-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-100 cursor-pointer"
+                className="size-8 rounded-lg border border-white/20 flex items-center justify-center text-white/70 hover:bg-white/10 cursor-pointer"
               >
                 <X className="size-4" />
               </button>

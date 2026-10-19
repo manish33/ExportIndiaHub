@@ -79,16 +79,15 @@ export const TradeProcess: React.FC = () => {
   return (
     <div className="space-y-0">
       {/* 1. Header Banner */}
-      <section className="bg-slate-950 text-white py-16 sm:py-20 border-b border-slate-800">
+      <section className="border-b border-white/10 bg-[#111111] py-12 text-white sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 uppercase tracking-[0.18em] mb-4">
-            <span className="size-1.5 rounded-full bg-emerald-400" />
+          <div className="mb-3 text-sm font-semibold text-white">
             Standard Operating Procedure
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight max-w-3xl leading-tight">
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             The 8-Phase Lifecycle of an Export India Hub Consignment.
           </h1>
-          <p className="mt-4 max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
             From technical parameter audit to clean on-board ocean Bill of Lading release. Every step is documented, time-bounded, and verified.
           </p>
         </div>
@@ -99,7 +98,7 @@ export const TradeProcess: React.FC = () => {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-start">
           {/* Phase Navigation List */}
           <div className="space-y-2.5">
-            <span className="text-xs font-mono uppercase tracking-[0.18em] font-medium text-slate-500 block mb-3">
+            <span className="text-xs font-mono uppercase tracking-[0.18em] font-medium text-white/50 block mb-3">
               Select Phase to Inspect Deliverables:
             </span>
 
@@ -113,13 +112,13 @@ export const TradeProcess: React.FC = () => {
                   onClick={() => setActivePhase(idx)}
                   className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer flex items-start gap-4 ${
                     isSelected
-                      ? "border-slate-900 bg-white shadow-md ring-1 ring-slate-900"
-                      : "border-slate-200 bg-white/70 hover:bg-white"
+                      ? "border-white bg-[#111111] shadow-md ring-1 ring-white"
+                      : "border-white/10 bg-white/5 hover:bg-white/10"
                   }`}
                 >
                   <span
                     className={`size-8 rounded font-mono font-bold text-xs flex items-center justify-center shrink-0 ${
-                      isSelected ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700"
+                      isSelected ? "bg-white text-black" : "bg-[#0c0c0c] text-white"
                     }`}
                   >
                     {p.phase}
@@ -127,14 +126,14 @@ export const TradeProcess: React.FC = () => {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h4 className="font-heading font-bold text-sm text-slate-900 line-clamp-1">
+                      <h4 className="font-heading font-bold text-sm text-white line-clamp-1">
                         {p.title}
                       </h4>
-                      <span className="font-mono text-[11px] text-slate-500 font-medium shrink-0">
+                      <span className="font-mono text-[11px] text-white/50 font-medium shrink-0">
                         {p.leadTime}
                       </span>
                     </div>
-                    <p className="mt-1 text-xs text-slate-500 line-clamp-1">
+                    <p className="mt-1 text-xs text-white/50 line-clamp-1">
                       {p.summary}
                     </p>
                   </div>
@@ -144,34 +143,34 @@ export const TradeProcess: React.FC = () => {
           </div>
 
           {/* Active Phase Deep Dive Card */}
-          <div className="sticky top-24 rounded-2xl border border-slate-200 bg-white p-7 sm:p-9 shadow-lg space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <span className="font-mono text-2xl font-bold text-slate-900">
+          <div className="sticky top-24 rounded-2xl border border-white/10 bg-[#111111] p-7 sm:p-9 shadow-lg space-y-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <span className="font-mono text-2xl font-bold text-white">
                 Phase {phases[activePhase].phase}
               </span>
-              <span className="font-mono text-xs font-medium text-slate-700 bg-slate-100 px-3 py-1 rounded">
+              <span className="font-mono text-xs font-medium text-white/75 bg-white/5 px-3 py-1 rounded">
                 Lead Time: {phases[activePhase].leadTime}
               </span>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold font-heading text-slate-900">
+              <h3 className="text-lg font-bold font-heading text-white">
                 {phases[activePhase].title}
               </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="mt-2 text-xs sm:text-sm text-white/65 leading-relaxed">
                 {phases[activePhase].details}
               </p>
             </div>
 
             {/* Generated Documents List */}
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2.5">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+            <div className="rounded-xl border border-white/10 bg-[#0c0c0c] p-4 space-y-2.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
                 Document Set Issued In This Phase:
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-700">
+              <ul className="space-y-1.5 text-xs text-white/75">
                 {phases[activePhase].documents.map((doc, i) => (
                   <li key={i} className="flex items-center gap-2">
-                    <Check className="size-3.5 text-slate-900 shrink-0" />
+                    <Check className="size-3.5 text-white shrink-0" />
                     <span>{doc}</span>
                   </li>
                 ))}
@@ -181,7 +180,7 @@ export const TradeProcess: React.FC = () => {
             <div className="pt-2">
               <Link
                 to="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 text-xs uppercase tracking-wider transition-colors"
+                className="sap-btn w-full"
               >
                 Inquire on This Operational Stage <ArrowRight className="size-3.5" />
               </Link>

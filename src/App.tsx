@@ -10,11 +10,21 @@ import { Contact } from "./pages/Contact";
 
 // Scroll to top helper on navigation
 const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [pathname]);
+    const frame = requestAnimationFrame(() => {
+      if (hash) {
+        const node = document.getElementById(hash.slice(1));
+        if (node) {
+          node.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, hash]);
 
   return null;
 };

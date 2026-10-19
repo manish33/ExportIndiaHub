@@ -1,33 +1,21 @@
 @import "tailwindcss";
 
-@layer theme {
-  :root {
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-heading: 'Plus Jakarta Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+@theme {
+  --font-sans: Manrope, Arial, Helvetica, sans-serif;
+  --font-heading: Manrope, Arial, Helvetica, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-    /* Corporate Enterprise Trade Palette */
-    --color-corp-navy: #0F1E36;
-    --color-corp-navy-dark: #0A1424;
-    --color-corp-navy-surface: #132742;
-
-    --color-corp-blue: #1E40AF;
-    --color-corp-blue-light: #EFF6FF;
-    --color-corp-blue-border: #BFDBFE;
-
-    --color-corp-gold: #C27803;
-    --color-corp-gold-hover: #9E5F00;
-    --color-corp-gold-light: #FEF7ED;
-
-    --color-corp-emerald: #047857;
-    --color-corp-emerald-light: #ECFDF5;
-
-    --color-corp-slate-50: #F8FAFC;
-    --color-corp-slate-100: #F1F5F9;
-    --color-corp-slate-200: #E2E8F0;
-    --color-corp-slate-700: #334155;
-    --color-corp-slate-900: #0F172A;
-  }
+  /* SAP Morning Horizon */
+  --color-sap: #0070f2;
+  --color-sap-hover: #0064d9;
+  --color-sap-active: #0054b6;
+  --color-sap-text: #1d2d3e;
+  --color-sap-label: #556b82;
+  --color-sap-bg: #f5f6f7;
+  --color-sap-border: #d9d9d9;
+  --color-sap-shell: #1d2d3e;
+  --color-sap-positive: #256f3a;
+  --color-sap-negative: #aa0808;
 }
 
 /* Subtle continuous corporate marquee */
@@ -55,6 +43,89 @@
 
 html {
   overflow-x: clip;
+  color-scheme: dark;
+}
+
+body {
+  background: #070707;
+  color: #f4f4f4;
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #ffffff;
+  color: #111111;
+}
+
+@layer components {
+.sap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: #f4f4f4;
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.sap-btn:hover {
+  background: #ffffff;
+}
+
+.sap-btn:active {
+  background: #e5e5e5;
+}
+
+.sap-btn:focus-visible {
+  outline: 2px solid #0070f2;
+  outline-offset: 2px;
+}
+
+.sap-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sap-btn-lite {
+  background: transparent;
+  color: #f4f4f4;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.sap-btn-lite:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sap-field {
+  width: 100%;
+  min-height: 2.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #f4f4f4;
+}
+
+.sap-field::placeholder {
+  color: #a3a3a3;
+}
+
+.sap-field:focus {
+  border-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 1px #ffffff;
+}
 }
 
 /* High-Legibility Typography Settings */
@@ -69,12 +140,12 @@ h1, h2, h3, h4, h5, h6 {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F172A;
+  background: #070707;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #3a3a3a;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #556b82;
 }

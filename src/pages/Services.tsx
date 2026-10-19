@@ -27,16 +27,15 @@ export const Services: React.FC = () => {
   return (
     <div className="space-y-0">
       {/* 1. Header Banner */}
-      <section className="bg-slate-950 text-white py-16 sm:py-20 border-b border-slate-800">
+      <section className="border-b border-white/10 bg-[#111111] py-12 text-white sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 uppercase tracking-[0.18em] mb-4">
-            <span className="size-1.5 rounded-full bg-emerald-400" />
+          <div className="mb-3 text-sm font-semibold text-white">
             Core Capabilities
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight max-w-3xl leading-tight">
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             Comprehensive Export Execution from Factory Floor to Discharge Port.
           </h1>
-          <p className="mt-4 max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
             Eliminate cross-border procurement vulnerabilities. We unify contract-manufacturing sourcing, on-site technical QA, customs clearance, and container shipping under one transparent service agreement.
           </p>
         </div>
@@ -51,32 +50,32 @@ export const Services: React.FC = () => {
             <div
               key={srv.id}
               id={srv.id}
-              className={`grid gap-10 lg:grid-cols-2 items-center rounded-2xl border border-slate-200 bg-white p-7 sm:p-10 shadow-xs ${
+              className={`grid gap-10 lg:grid-cols-2 items-center rounded-2xl border border-white/10 bg-[#111111] p-7 sm:p-10 shadow-xs ${
                 isEven ? "lg:grid-flow-dense" : ""
               }`}
             >
               <div className={`space-y-5 ${isEven ? "lg:col-start-2" : ""}`}>
-                <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.18em] text-slate-500">
+                <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.18em] text-white/50">
                   Pillar 0{index + 1}
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight">
                   {srv.title}
                 </h2>
 
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-white/65 leading-relaxed">
                   {srv.fullDesc}
                 </p>
 
                 {/* Scope Coverage */}
                 <div className="space-y-2 pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
                     Operational Scope:
                   </h4>
-                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  <ul className="space-y-2 text-xs sm:text-sm text-white/75">
                     {srv.features.map((feat, idx) => (
                       <li key={idx} className="flex items-start gap-2.5">
-                        <span className="text-slate-400 font-mono mt-0.5">✓</span>
+                        <span className="text-white/40 font-mono mt-0.5">✓</span>
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -84,11 +83,11 @@ export const Services: React.FC = () => {
                 </div>
 
                 {/* Deliverables Box */}
-                <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs text-slate-800">
-                  <span className="font-bold uppercase tracking-wider text-slate-900 block mb-1.5 font-mono text-[11px]">
+                <div className="rounded-lg border border-white/10 bg-[#0c0c0c] p-4 text-xs text-white/90">
+                  <span className="font-bold uppercase tracking-wider text-white block mb-1.5 font-mono text-[11px]">
                     Buyer Document Deliverables:
                   </span>
-                  <ul className="space-y-1 list-disc list-inside text-slate-600">
+                  <ul className="space-y-1 list-disc list-inside text-white/65">
                     {srv.deliverables.map((deliv, idx) => (
                       <li key={idx}>{deliv}</li>
                     ))}
@@ -97,37 +96,37 @@ export const Services: React.FC = () => {
               </div>
 
               {/* Protocol Summary Card */}
-              <div className={`rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8 space-y-4 ${isEven ? "lg:col-start-1" : ""}`}>
-                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                  <span className="font-mono text-xs text-slate-800 font-bold uppercase tracking-wider">
+              <div className={`rounded-xl border border-white/10 bg-[#0c0c0c] p-6 sm:p-8 space-y-4 ${isEven ? "lg:col-start-1" : ""}`}>
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="font-mono text-xs text-white/90 font-bold uppercase tracking-wider">
                     Protocol Standards
                   </span>
-                  <span className="text-xs font-mono text-slate-500">AQL & ISO Compliant</span>
+                  <span className="text-xs font-mono text-white/50">AQL & ISO Compliant</span>
                 </div>
 
-                <div className="space-y-2.5 pt-2 text-xs text-slate-700">
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200">
-                    <span className="text-slate-500">Inspection Level</span>
-                    <strong className="text-slate-900">Dedicated On-Site Engineer</strong>
+                <div className="space-y-2.5 pt-2 text-xs text-white/75">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#111111] border border-white/10">
+                    <span className="text-white/50">Inspection Level</span>
+                    <strong className="text-white">Dedicated On-Site Engineer</strong>
                   </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200">
-                    <span className="text-slate-500">Reporting Format</span>
-                    <strong className="text-slate-900">Pre-Shipment Digital Dossier</strong>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#111111] border border-white/10">
+                    <span className="text-white/50">Reporting Format</span>
+                    <strong className="text-white">Pre-Shipment Digital Dossier</strong>
                   </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200">
-                    <span className="text-slate-500">Third-Party Verification</span>
-                    <strong className="text-slate-900">SGS / TUV / Intertek on Request</strong>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#111111] border border-white/10">
+                    <span className="text-white/50">Third-Party Verification</span>
+                    <strong className="text-white">SGS / TUV / Intertek on Request</strong>
                   </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200">
-                    <span className="text-slate-500">Sea Export Gateways</span>
-                    <strong className="text-slate-900 font-mono">Mundra & Kandla Ports</strong>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-[#111111] border border-white/10">
+                    <span className="text-white/50">Sea Export Gateways</span>
+                    <strong className="text-white font-mono">Mundra & Kandla Ports</strong>
                   </div>
                 </div>
 
                 <div className="pt-2">
                   <Link
                     to="/contact"
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors"
+                    className="sap-btn w-full"
                   >
                     Request Scope Proposal <ArrowRight className="size-3.5" />
                   </Link>
@@ -139,16 +138,16 @@ export const Services: React.FC = () => {
       </section>
 
       {/* 3. Incoterms 2020 Matrix */}
-      <section className="bg-slate-50 border-y border-slate-200 py-16 sm:py-20">
+      <section className="bg-[#0c0c0c] border-y border-white/10 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.18em] text-white/50">
               Contract Terms
             </div>
-            <h2 className="mt-2 text-3xl font-extrabold font-heading text-slate-900 tracking-tight">
+            <h2 className="mt-2 text-3xl font-extrabold font-heading text-white tracking-tight">
               Incoterms 2020 Operational Matrix
             </h2>
-            <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+            <p className="mt-2 text-white/65 text-sm leading-relaxed">
               Understand exact cost and risk boundaries before contracting. Export India Hub supports standard international commercial delivery terms:
             </p>
           </div>
@@ -162,22 +161,22 @@ export const Services: React.FC = () => {
                 type="button"
                 className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${
                   selectedIncoterm === term.code
-                    ? "border-slate-900 bg-white shadow-md ring-1 ring-slate-900"
-                    : "border-slate-200 bg-white/70 hover:bg-white"
+                    ? "border-white bg-white/10 shadow-sm ring-1 ring-white"
+                    : "border-white/10 bg-white/5 hover:bg-white/10"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xl font-bold text-slate-900">
+                  <span className="font-mono text-xl font-bold text-white">
                     {term.code}
                   </span>
                   {selectedIncoterm === term.code && (
-                    <span className="size-2 rounded-full bg-slate-900" />
+                    <span className="size-2 rounded-full bg-[#111111]" />
                   )}
                 </div>
-                <h4 className="mt-2 font-semibold text-xs text-slate-900 line-clamp-1">
+                <h4 className="mt-2 font-semibold text-xs text-white line-clamp-1">
                   {term.name}
                 </h4>
-                <p className="mt-1 text-[11px] text-slate-500 line-clamp-2">
+                <p className="mt-1 text-[11px] text-white/50 line-clamp-2">
                   {term.description}
                 </p>
               </button>
@@ -185,9 +184,9 @@ export const Services: React.FC = () => {
           </div>
 
           {/* Comparison Table */}
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
+          <div className="overflow-x-auto rounded-xl border border-white/10 bg-[#111111] shadow-xs">
             <table className="w-full min-w-[720px] text-left text-xs sm:text-sm">
-              <thead className="border-b border-slate-200 bg-slate-100 font-mono text-xs uppercase tracking-wider text-slate-700">
+              <thead className="border-b border-white/10 bg-white/5 font-mono text-xs uppercase tracking-wider text-white/75">
                 <tr>
                   <th className="py-4 px-6">Operational Stage</th>
                   <th className={`py-4 px-4 text-center ${selectedIncoterm === "EXW" ? "bg-slate-200/80 font-bold" : ""}`}>
@@ -204,23 +203,23 @@ export const Services: React.FC = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tbody className="divide-y divide-slate-100 text-white/75">
                 {incotermComparison.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-medium text-slate-900">
+                  <tr key={idx} className="hover:bg-[#0c0c0c] transition-colors">
+                    <td className="py-3.5 px-6 font-medium text-white">
                       {row.feature}
                     </td>
-                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "EXW" ? "bg-slate-50" : ""}`}>
-                      {row.exw ? <strong className="text-slate-900">Seller</strong> : <span className="text-slate-400">Buyer</span>}
+                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "EXW" ? "bg-[#0c0c0c]" : ""}`}>
+                      {row.exw ? <strong className="text-white">Seller</strong> : <span className="text-white/40">Buyer</span>}
                     </td>
-                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "FOB" ? "bg-slate-50" : ""}`}>
-                      {row.fob ? <strong className="text-slate-900">Seller</strong> : <span className="text-slate-400">Buyer</span>}
+                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "FOB" ? "bg-[#0c0c0c]" : ""}`}>
+                      {row.fob ? <strong className="text-white">Seller</strong> : <span className="text-white/40">Buyer</span>}
                     </td>
-                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "CFR" ? "bg-slate-50" : ""}`}>
-                      {row.cfr ? <strong className="text-slate-900">Seller</strong> : <span className="text-slate-400">Buyer</span>}
+                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "CFR" ? "bg-[#0c0c0c]" : ""}`}>
+                      {row.cfr ? <strong className="text-white">Seller</strong> : <span className="text-white/40">Buyer</span>}
                     </td>
-                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "CIF" ? "bg-slate-50" : ""}`}>
-                      {row.cif ? <strong className="text-slate-900">Seller</strong> : <span className="text-slate-400">Buyer</span>}
+                    <td className={`py-3.5 px-4 text-center ${selectedIncoterm === "CIF" ? "bg-[#0c0c0c]" : ""}`}>
+                      {row.cif ? <strong className="text-white">Seller</strong> : <span className="text-white/40">Buyer</span>}
                     </td>
                   </tr>
                 ))}
@@ -231,18 +230,18 @@ export const Services: React.FC = () => {
       </section>
 
       {/* 4. Action Banner */}
-      <section className="bg-slate-950 text-white py-16 border-t border-slate-800">
+      <section className="border-t border-white/10 bg-[#0c0c0c] py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl font-extrabold font-heading text-white">
+          <h2 className="text-3xl font-bold text-white">
             Request landed cost calculations for your destination port.
           </h2>
-          <p className="max-w-xl mx-auto text-slate-300 text-sm leading-relaxed">
+          <p className="mx-auto max-w-xl text-sm leading-relaxed text-white/60">
             Specify commodity dimensions, volume, and discharge port to receive a formal commercial proposal within 24 hours.
           </p>
           <div className="pt-2">
             <Link
               to="/contact"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-semibold px-6 text-xs uppercase tracking-wider transition-colors"
+              className="sap-btn"
             >
               Submit Trade RFQ
               <ArrowRight className="size-3.5" />

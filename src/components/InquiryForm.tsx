@@ -159,17 +159,17 @@ Sent to: ${COMPANY.email}`;
     const emailInfo = getEmailContent(submittedData.rfqCode, submittedData.data, submittedData.date);
 
     return (
-      <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-6 sm:p-7 text-slate-800 animate-in fade-in duration-200">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+      <div className="rounded-xl border border-white/10 bg-white/5 p-6 sm:p-7 text-white/90 animate-in fade-in duration-200">
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
-            <div className="size-9 rounded-md bg-slate-900 text-white flex items-center justify-center">
+            <div className="flex size-9 items-center justify-center rounded-md bg-white text-black">
               <FileText className="size-4.5" />
             </div>
             <div>
-              <h3 className="font-heading font-bold text-base text-slate-900">
+              <h3 className="font-heading font-bold text-base text-white">
                 Commercial RFQ Registered
               </h3>
-              <p className="text-xs font-mono text-slate-500">
+              <p className="text-xs font-mono text-white/50">
                 Ref: {submittedData.rfqCode} · Export India Hub Desk
               </p>
             </div>
@@ -177,48 +177,48 @@ Sent to: ${COMPANY.email}`;
           <button
             onClick={() => window.print()}
             type="button"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 font-medium px-2.5 py-1 border border-slate-200 rounded bg-white cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-white/65 hover:text-white font-medium px-2.5 py-1 border border-white/10 rounded bg-[#111111] cursor-pointer"
           >
             <Printer className="size-3.5" /> Print Summary
           </button>
         </div>
 
         {/* Destination routing banner */}
-        <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50/70 p-3 flex items-start gap-2.5 text-xs text-blue-900">
-          <Mail className="size-4 text-blue-700 shrink-0 mt-0.5" />
+        <div className="mt-4 rounded-lg border border-white/10 bg-white/5 p-3 flex items-start gap-2.5 text-xs text-white">
+          <Mail className="size-4 text-white/70 shrink-0 mt-0.5" />
           <div className="leading-relaxed">
             <strong>Target Export Desk Email: </strong>
-            <span className="font-mono font-bold text-blue-950 underline">{COMPANY.email}</span>
-            <p className="text-[11px] text-blue-700 mt-0.5">
+            <span className="font-mono font-bold text-white underline">{COMPANY.email}</span>
+            <p className="text-[11px] text-white/70 mt-0.5">
               An email draft has been generated for direct submission to our Zoho corporate mailbox.
             </p>
           </div>
         </div>
 
         {/* Docket Specs */}
-        <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-2xs font-mono text-xs space-y-3">
-          <div className="grid grid-cols-1 gap-3 border-b border-slate-100 pb-3 sm:grid-cols-2">
+        <div className="mt-4 rounded-lg border border-white/10 bg-[#111111] p-4 shadow-2xs font-mono text-xs space-y-3">
+          <div className="grid grid-cols-1 gap-3 border-b border-white/10 pb-3 sm:grid-cols-2">
             <div>
-              <span className="text-slate-400 block text-[11px]">Commodity / Product:</span>
-              <strong className="text-slate-900 font-medium">{submittedData.data.product}</strong>
+              <span className="text-white/40 block text-[11px]">Commodity / Product:</span>
+              <strong className="text-white font-medium">{submittedData.data.product}</strong>
             </div>
             <div>
-              <span className="text-slate-400 block text-[11px]">Destination Port:</span>
-              <strong className="text-slate-900 font-medium">{submittedData.data.destination}</strong>
+              <span className="text-white/40 block text-[11px]">Destination Port:</span>
+              <strong className="text-white font-medium">{submittedData.data.destination}</strong>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
             <div>
-              <span className="text-slate-400 block text-[11px]">Incoterm:</span>
-              <span className="font-bold text-slate-900">{submittedData.data.incoterm}</span>
+              <span className="text-white/40 block text-[11px]">Incoterm:</span>
+              <span className="font-bold text-white">{submittedData.data.incoterm}</span>
             </div>
             <div>
-              <span className="text-slate-400 block text-[11px]">Volume:</span>
-              <span className="text-slate-900">{submittedData.data.volume || "Standard FCL"}</span>
+              <span className="text-white/40 block text-[11px]">Volume:</span>
+              <span className="text-white">{submittedData.data.volume || "Standard FCL"}</span>
             </div>
             <div>
-              <span className="text-slate-400 block text-[11px]">Desk Routing:</span>
+              <span className="text-white/40 block text-[11px]">Desk Routing:</span>
               <span className="text-emerald-700 font-semibold truncate">{COMPANY.email}</span>
             </div>
           </div>
@@ -228,7 +228,7 @@ Sent to: ${COMPANY.email}`;
         <div className="mt-5 flex flex-col sm:flex-row gap-2.5">
           <a
             href={emailInfo.mailtoUrl}
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors shadow-xs"
+            className="sap-btn flex-1"
           >
             <Mail className="size-4" />
             Send to {COMPANY.email}
@@ -238,24 +238,24 @@ Sent to: ${COMPANY.email}`;
             href={getWhatsAppLink()}
             target="_blank"
             rel="noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors shadow-xs"
+            className="sap-btn flex-1"
           >
-            <MessageCircle className="size-4 text-emerald-400" />
+            <MessageCircle className="size-4" />
             Send via WhatsApp
           </a>
 
           <button
             onClick={handleCopyFullEmail}
             type="button"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/15 bg-[#111111] px-3.5 py-2.5 text-xs font-medium text-white/75 hover:bg-[#0c0c0c] transition-colors cursor-pointer"
           >
             {copiedEmailText ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
             {copiedEmailText ? "Email Copied!" : "Copy Full RFQ"}
           </button>
         </div>
 
-        <p className="mt-4 text-[11px] text-slate-500 text-center">
-          Inquiries sent to <span className="text-slate-900 font-mono font-bold">{COMPANY.email}</span> receive formal commercial landed quotations and manufacturer capability audits within 24 business hours.
+        <p className="mt-4 text-[11px] text-white/50 text-center">
+          Inquiries sent to <span className="text-white font-mono font-bold">{COMPANY.email}</span> receive formal commercial landed quotations and manufacturer capability audits within 24 business hours.
         </p>
       </div>
     );
@@ -264,18 +264,18 @@ Sent to: ${COMPANY.email}`;
   return (
     <form onSubmit={handleSubmit} className="grid gap-4.5">
       {/* Target Desk Alert */}
-      <div className="flex flex-col gap-1 rounded-md border border-slate-200 bg-slate-100 px-3 py-2 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-1 rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/75 sm:flex-row sm:items-center sm:justify-between">
         <span className="flex items-center gap-1.5 font-medium">
-          <Mail className="size-3.5 shrink-0 text-slate-500" />
+          <Mail className="size-3.5 shrink-0 text-white/50" />
           Direct Dispatch Address:
         </span>
-        <span className="min-w-0 break-all font-mono font-bold text-slate-900">{COMPANY.email}</span>
+        <span className="min-w-0 break-all font-mono font-bold text-white">{COMPANY.email}</span>
       </div>
 
       {/* Name and Company */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-name`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-name`} className="text-xs font-medium text-white">
             Full Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -287,12 +287,12 @@ Sent to: ${COMPANY.email}`;
             placeholder="e.g. Prithviraj Chauhan"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
 
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-company`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-company`} className="text-xs font-medium text-white">
             Company Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -303,7 +303,7 @@ Sent to: ${COMPANY.email}`;
             placeholder="Company / Trade House"
             value={formData.company}
             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
       </div>
@@ -311,7 +311,7 @@ Sent to: ${COMPANY.email}`;
       {/* Email & Phone */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-email`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-email`} className="text-xs font-medium text-white">
             Corporate Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -322,12 +322,12 @@ Sent to: ${COMPANY.email}`;
             placeholder="name@company.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
 
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-phone`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-phone`} className="text-xs font-medium text-white">
             Phone / WhatsApp <span className="text-red-500">*</span>
           </label>
           <input
@@ -339,7 +339,7 @@ Sent to: ${COMPANY.email}`;
             placeholder="+CountryCode Number"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition font-mono"
+            className="sap-field font-mono"
           />
         </div>
       </div>
@@ -347,7 +347,7 @@ Sent to: ${COMPANY.email}`;
       {/* Destination & Business Type */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-destination`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-destination`} className="text-xs font-medium text-white">
             Destination Country / Discharge Port <span className="text-red-500">*</span>
           </label>
           <input
@@ -357,19 +357,19 @@ Sent to: ${COMPANY.email}`;
             placeholder="e.g. Jebel Ali (UAE) or Rotterdam (Netherlands)"
             value={formData.destination}
             onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
 
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-profile`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-profile`} className="text-xs font-medium text-white">
             Organization Profile
           </label>
           <select
             id={`${fieldId}-profile`}
             value={formData.businessType}
             onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="h-10 w-full rounded-md border border-white/15 bg-[#111111] px-3 text-sm text-white focus:border-white focus:ring-1 focus:ring-white outline-none transition"
           >
             <option value="buyer">Direct Foreign Importer / Commercial Buyer</option>
             <option value="agent">International Sourcing Agent / Trade House</option>
@@ -382,7 +382,7 @@ Sent to: ${COMPANY.email}`;
       {/* Product & Volume & Incoterm */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_7.5rem]">
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-product`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-product`} className="text-xs font-medium text-white">
             Commodity / Required Product <span className="text-red-500">*</span>
           </label>
           <input
@@ -392,12 +392,12 @@ Sent to: ${COMPANY.email}`;
             placeholder="e.g. Brass Pipe Fittings / Cumin Seeds 99%"
             value={formData.product}
             onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
 
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-volume`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-volume`} className="text-xs font-medium text-white">
             Volume / Batch Quantity
           </label>
           <input
@@ -406,19 +406,19 @@ Sent to: ${COMPANY.email}`;
             placeholder="e.g. 2 x 20ft FCL or Metric Tonnes"
             value={formData.volume}
             onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field"
           />
         </div>
 
         <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-incoterm`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-incoterm`} className="text-xs font-medium text-white">
             Incoterm
           </label>
           <select
             id={`${fieldId}-incoterm`}
             value={formData.incoterm}
             onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-2.5 text-sm font-mono font-semibold text-slate-900 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+            className="sap-field font-mono font-semibold"
           >
             {INCOTERMS.map((i) => (
               <option key={i.code} value={i.code}>
@@ -431,7 +431,7 @@ Sent to: ${COMPANY.email}`;
 
       {/* Message & Specs */}
       <div className="grid gap-1.5">
-          <label htmlFor={`${fieldId}-message`} className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-message`} className="text-xs font-medium text-white">
           Technical Specifications / Target Landed Price / Payment Terms
         </label>
         <textarea
@@ -440,21 +440,21 @@ Sent to: ${COMPANY.email}`;
           placeholder="Specify exact material grade, drawing standards, packaging requirements, target delivery timeline, and preferred payment instrument (e.g. Irrevocable L/C at Sight, T/T wire)..."
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full rounded-md border border-slate-300 bg-white p-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
+          className="sap-field"
         />
       </div>
 
       {/* Submit footer */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
-        <p className="text-[11px] text-slate-500 flex items-center gap-1.5">
-          <ShieldCheck className="size-3.5 text-slate-700 shrink-0" />
-          Dispatches directly to <strong className="text-slate-800 font-mono">{COMPANY.email}</strong>
+        <p className="text-[11px] text-white/50 flex items-center gap-1.5">
+          <ShieldCheck className="size-3.5 text-white/75 shrink-0" />
+          Dispatches directly to <strong className="text-white/90 font-mono">{COMPANY.email}</strong>
         </p>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-2.5 text-xs uppercase tracking-wider shadow-xs transition-colors cursor-pointer disabled:opacity-50"
+          className="sap-btn cursor-pointer disabled:opacity-50"
         >
           {isSubmitting ? (
             <>Processing & Routing...</>
