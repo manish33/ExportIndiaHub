@@ -1,0 +1,6 @@
+{
+  "name": "Export India Hub",
+  "description": "DGFT IEC registered merchant exporter and global sourcing partner in Rajkot, Gujarat. Sourcing, quality inspection, customs clearance, and freight logistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

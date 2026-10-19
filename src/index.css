@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    /* Corporate Enterprise Trade Palette */
+    --color-corp-navy: #0F1E36;
+    --color-corp-navy-dark: #0A1424;
+    --color-corp-navy-surface: #132742;
+
+    --color-corp-blue: #1E40AF;
+    --color-corp-blue-light: #EFF6FF;
+    --color-corp-blue-border: #BFDBFE;
+
+    --color-corp-gold: #C27803;
+    --color-corp-gold-hover: #9E5F00;
+    --color-corp-gold-light: #FEF7ED;
+
+    --color-corp-emerald: #047857;
+    --color-corp-emerald-light: #ECFDF5;
+
+    --color-corp-slate-50: #F8FAFC;
+    --color-corp-slate-100: #F1F5F9;
+    --color-corp-slate-200: #E2E8F0;
+    --color-corp-slate-700: #334155;
+    --color-corp-slate-900: #0F172A;
+  }
+}
+
+/* Subtle continuous corporate marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* High-Legibility Typography Settings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Professional Corporate Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
