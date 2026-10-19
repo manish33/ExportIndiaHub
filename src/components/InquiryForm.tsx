@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { Send, Mail, CheckCircle2, ShieldCheck, Copy, MessageCircle, FileText, Printer, Check, ExternalLink } from "lucide-react";
 import { COMPANY, INCOTERMS } from "../lib/site";
 
@@ -26,6 +26,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({
     message: ""
   });
 
+  const fieldId = useId();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedData, setSubmittedData] = useState<{
     rfqCode: string;
@@ -196,7 +197,7 @@ Sent to: ${COMPANY.email}`;
 
         {/* Docket Specs */}
         <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-2xs font-mono text-xs space-y-3">
-          <div className="grid grid-cols-2 gap-3 pb-3 border-b border-slate-100">
+          <div className="grid grid-cols-1 gap-3 border-b border-slate-100 pb-3 sm:grid-cols-2">
             <div>
               <span className="text-slate-400 block text-[11px]">Commodity / Product:</span>
               <strong className="text-slate-900 font-medium">{submittedData.data.product}</strong>
@@ -207,7 +208,7 @@ Sent to: ${COMPANY.email}`;
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 text-xs">
+          <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
             <div>
               <span className="text-slate-400 block text-[11px]">Incoterm:</span>
               <span className="font-bold text-slate-900">{submittedData.data.incoterm}</span>
@@ -263,24 +264,26 @@ Sent to: ${COMPANY.email}`;
   return (
     <form onSubmit={handleSubmit} className="grid gap-4.5">
       {/* Target Desk Alert */}
-      <div className="flex items-center justify-between rounded-md bg-slate-100 border border-slate-200 px-3 py-2 text-xs text-slate-700">
+      <div className="flex flex-col gap-1 rounded-md border border-slate-200 bg-slate-100 px-3 py-2 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between">
         <span className="flex items-center gap-1.5 font-medium">
-          <Mail className="size-3.5 text-slate-500" />
+          <Mail className="size-3.5 shrink-0 text-slate-500" />
           Direct Dispatch Address:
         </span>
-        <span className="font-mono font-bold text-slate-900">{COMPANY.email}</span>
+        <span className="min-w-0 break-all font-mono font-bold text-slate-900">{COMPANY.email}</span>
       </div>
 
       {/* Name and Company */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-name`} className="text-xs font-medium text-slate-900">
             Full Name <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-name`}
             required
             minLength={2}
             type="text"
+            autoComplete="name"
             placeholder="e.g. Prithviraj Chauhan"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -289,12 +292,14 @@ Sent to: ${COMPANY.email}`;
         </div>
 
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-company`} className="text-xs font-medium text-slate-900">
             Company Name <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-company`}
             required
             type="text"
+            autoComplete="organization"
             placeholder="Company / Trade House"
             value={formData.company}
             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -306,12 +311,14 @@ Sent to: ${COMPANY.email}`;
       {/* Email & Phone */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-email`} className="text-xs font-medium text-slate-900">
             Corporate Email <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-email`}
             required
             type="email"
+            autoComplete="email"
             placeholder="name@company.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -320,13 +327,15 @@ Sent to: ${COMPANY.email}`;
         </div>
 
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-phone`} className="text-xs font-medium text-slate-900">
             Phone / WhatsApp <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-phone`}
             required
             minLength={6}
             type="tel"
+            autoComplete="tel"
             placeholder="+CountryCode Number"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -338,10 +347,11 @@ Sent to: ${COMPANY.email}`;
       {/* Destination & Business Type */}
       <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2"}`}>
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-destination`} className="text-xs font-medium text-slate-900">
             Destination Country / Discharge Port <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-destination`}
             required
             type="text"
             placeholder="e.g. Jebel Ali (UAE) or Rotterdam (Netherlands)"
@@ -352,10 +362,11 @@ Sent to: ${COMPANY.email}`;
         </div>
 
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-profile`} className="text-xs font-medium text-slate-900">
             Organization Profile
           </label>
           <select
+            id={`${fieldId}-profile`}
             value={formData.businessType}
             onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
             className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
@@ -369,12 +380,13 @@ Sent to: ${COMPANY.email}`;
       </div>
 
       {/* Product & Volume & Incoterm */}
-      <div className={`grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-[1.3fr_1fr_120px]"}`}>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_7.5rem]">
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-product`} className="text-xs font-medium text-slate-900">
             Commodity / Required Product <span className="text-red-500">*</span>
           </label>
           <input
+            id={`${fieldId}-product`}
             required
             type="text"
             placeholder="e.g. Brass Pipe Fittings / Cumin Seeds 99%"
@@ -385,10 +397,11 @@ Sent to: ${COMPANY.email}`;
         </div>
 
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-volume`} className="text-xs font-medium text-slate-900">
             Volume / Batch Quantity
           </label>
           <input
+            id={`${fieldId}-volume`}
             type="text"
             placeholder="e.g. 2 x 20ft FCL or Metric Tonnes"
             value={formData.volume}
@@ -398,10 +411,11 @@ Sent to: ${COMPANY.email}`;
         </div>
 
         <div className="grid gap-1.5">
-          <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-incoterm`} className="text-xs font-medium text-slate-900">
             Incoterm
           </label>
           <select
+            id={`${fieldId}-incoterm`}
             value={formData.incoterm}
             onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
             className="h-10 w-full rounded-md border border-slate-300 bg-white px-2.5 text-sm font-mono font-semibold text-slate-900 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition"
@@ -417,10 +431,11 @@ Sent to: ${COMPANY.email}`;
 
       {/* Message & Specs */}
       <div className="grid gap-1.5">
-        <label className="text-xs font-medium text-slate-900">
+          <label htmlFor={`${fieldId}-message`} className="text-xs font-medium text-slate-900">
           Technical Specifications / Target Landed Price / Payment Terms
         </label>
         <textarea
+          id={`${fieldId}-message`}
           rows={compact ? 3 : 4}
           placeholder="Specify exact material grade, drawing standards, packaging requirements, target delivery timeline, and preferred payment instrument (e.g. Irrevocable L/C at Sight, T/T wire)..."
           value={formData.message}

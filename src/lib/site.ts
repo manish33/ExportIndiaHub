@@ -47,7 +47,7 @@ export const COMPANY = {
     pincode: "360003",
     country: "India",
     full: "Block No. 15, Pitru Aashish, Om Residency, near Kranti Manav Seva Trust, 80ft Road, Kuvadva Road, Rajkot, Gujarat - 360003, India",
-    mapsUrl: "https://maps.google.com/?q=Kuvadva+Road+Rajkot+Gujarat+360003"
+    mapsUrl: "https://goo.gl/maps/MyZKp6ay4934KnRx7"
   },
   established: "2024",
   workingHours: "Monday – Saturday: 9:00 AM – 7:00 PM IST (Export Desk operates 24/7 for overseas buyers)"

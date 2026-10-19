@@ -91,16 +91,16 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Port Logistics Ticker */}
-            <div className="pt-3 border-t border-slate-800/80 flex items-center gap-6 text-xs font-mono text-slate-400">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-slate-800/80 pt-3 text-xs font-mono text-slate-400">
               <div className="flex items-center gap-1.5">
-                <Anchor className="size-3.5 text-slate-400" />
-                <span>Mundra: <strong className="text-white font-normal">230 km</strong></span>
+                <Anchor className="size-3.5 shrink-0 text-slate-400" />
+                <span>Mundra: <strong className="font-normal text-white">230 km</strong></span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Anchor className="size-3.5 text-slate-400" />
-                <span>Kandla: <strong className="text-white font-normal">210 km</strong></span>
+                <Anchor className="size-3.5 shrink-0 text-slate-400" />
+                <span>Kandla: <strong className="font-normal text-white">210 km</strong></span>
               </div>
-              <span className="text-slate-500 hidden sm:inline">Direct Multi-Lane Freight Highway</span>
+              <span className="text-slate-500">Direct multi-lane freight highway</span>
             </div>
           </div>
 
@@ -165,30 +165,46 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 2. Statistical Proof Strip */}
-      <section className="bg-slate-900 text-white border-b border-slate-800">
-        <div className="mx-auto grid max-w-7xl divide-y divide-slate-800 md:divide-y-0 md:divide-x md:divide-slate-800 px-4 sm:px-6 lg:px-8 md:grid-cols-4 py-2">
-          {STATS.map((stat, i) => (
-            <div key={i} className="flex items-baseline gap-3.5 py-4 md:px-6 md:first:pl-0">
-              <span className="font-heading text-2xl lg:text-3xl font-extrabold text-white shrink-0 font-mono">
-                {stat.value}
-              </span>
-              <div>
-                <span className="block text-xs font-bold text-slate-200 uppercase tracking-wider">
-                  {stat.label}
-                </span>
-                <span className="block text-xs text-slate-400">
-                  {stat.sub}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <section aria-label="Trade credentials" className="border-b border-slate-800 bg-slate-900 text-white">
+        <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-px bg-slate-800 sm:grid-cols-2 xl:grid-cols-4">
+          {STATS.map((stat) => {
+            const longValue = stat.value.length > 8;
+            return (
+              <li
+                key={stat.label}
+                className="flex min-w-0 items-center gap-4 bg-slate-900 px-5 py-5 sm:px-6 xl:block"
+              >
+                <p
+                  className={`shrink-0 font-heading font-extrabold leading-none tracking-tight text-white ${
+                    longValue ? "text-xl sm:text-2xl" : "text-3xl"
+                  }`}
+                >
+                  {stat.value}
+                </p>
+                <div className="min-w-0 xl:mt-3">
+                  <p className="text-sm font-semibold leading-snug text-slate-50">
+                    {stat.label}
+                  </p>
+                  <p className="mt-1 text-sm leading-snug text-slate-400">
+                    {stat.sub}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
 
-        {/* Quiet Ticker */}
-        <div className="overflow-hidden border-t border-slate-800 bg-slate-950/80 py-2">
-          <div className="animate-marquee gap-8 font-mono text-[11px] tracking-wider text-slate-400">
+        <ul className="flex flex-col gap-1.5 border-t border-slate-800 bg-slate-950/80 px-5 py-3 font-mono text-[11px] leading-relaxed tracking-wide text-slate-400 md:hidden">
+          {TICKER_ITEMS.map((item) => (
+            <li key={item} className="min-w-0">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="hidden overflow-hidden border-t border-slate-800 bg-slate-950/80 py-2.5 md:block" aria-hidden="true">
+          <div className="animate-marquee flex-nowrap gap-8 font-mono text-[11px] tracking-wider text-slate-400">
             {TICKER_ITEMS.concat(TICKER_ITEMS).map((item, idx) => (
-              <span key={idx} className="flex items-center gap-8">
+              <span key={idx} className="flex shrink-0 items-center gap-8 whitespace-nowrap">
                 <span>{item}</span>
                 <span className="text-slate-600">·</span>
               </span>
@@ -428,7 +444,7 @@ export const Home: React.FC = () => {
             </Link>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {TRADE_STEPS.map((s) => (
               <div
                 key={s.step}

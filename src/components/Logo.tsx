@@ -17,7 +17,7 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const sizeMap = {
     sm: { h: 32, w: 28, text: "text-base", sub: "text-[9px]" },
-    md: { h: 42, w: 36, text: "text-lg", sub: "text-[10px]" },
+    md: { h: 40, w: 34, text: "text-sm sm:text-base lg:text-lg", sub: "text-[10px]" },
     lg: { h: 56, w: 48, text: "text-2xl", sub: "text-xs" },
     xl: { h: 72, w: 62, text: "text-3xl", sub: "text-sm" },
   };
@@ -150,14 +150,14 @@ export const Logo: React.FC<LogoProps> = ({
 
       <div className="flex flex-col justify-center leading-none">
         {/* Crisp Corporate Brand Mark */}
-        <div className="flex items-baseline tracking-tight font-heading font-extrabold text-slate-900">
+        <div className="flex flex-nowrap items-baseline gap-x-1 whitespace-nowrap tracking-tight font-heading font-extrabold text-slate-900">
           <span className={`${s.text} font-black tracking-tight text-amber-600`}>
             EXPORT
           </span>
           <span className={`mx-1 ${s.text} font-black tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
             INDIA
           </span>
-          <span className={`${s.text} font-black tracking-tight text-emerald-700`}>
+          <span className={`${s.text} font-black tracking-tight ${isDark ? "text-emerald-400" : "text-emerald-700"}`}>
             HUB
           </span>
         </div>

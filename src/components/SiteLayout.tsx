@@ -44,43 +44,43 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
     <div className="flex min-h-screen flex-col bg-white text-slate-900 font-sans selection:bg-slate-200">
       {/* 1. Quiet Utility Bar */}
       <div className="bg-slate-900 text-slate-300 border-b border-slate-800">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8 py-2 text-xs">
-          {/* Institutional Contact & Verification */}
-          <div className="flex items-center gap-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-1.5 px-4 py-2 text-xs sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-1">
             <a
               href={`mailto:${COMPANY.email}`}
-              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+              className="hidden items-center gap-1.5 text-slate-300 transition-colors hover:text-white md:flex"
             >
-              <Mail className="size-3.5 text-slate-400" />
-              <span className="font-mono">{COMPANY.email}</span>
+              <Mail className="size-3.5 shrink-0 text-slate-400" />
+              <span className="truncate font-mono">{COMPANY.email}</span>
             </a>
 
             <a
               href={`tel:${COMPANY.phone}`}
-              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 text-slate-300 transition-colors hover:text-white"
             >
-              <Phone className="size-3.5 text-slate-400" />
+              <Phone className="size-3.5 shrink-0 text-slate-400" />
               <span className="font-mono">{COMPANY.phone}</span>
             </a>
 
-            <div className="hidden lg:flex items-center gap-2 text-slate-400 font-mono text-[11px] border-l border-slate-700 pl-6">
-              <ShieldCheck className="size-3.5 text-emerald-400" />
-              <span>DGFT IEC: <span className="text-white font-medium">EFQPS5167K</span></span>
-              <span>·</span>
-              <span>GSTIN: <span className="text-white font-medium">24EFQPS5167K1ZM</span></span>
+            <div className="hidden items-center gap-2 border-l border-slate-700 pl-4 font-mono text-[11px] text-slate-400 xl:flex">
+              <ShieldCheck className="size-3.5 shrink-0 text-emerald-400" />
+              <span>DGFT IEC: <span className="font-medium text-white">EFQPS5167K</span></span>
+              <span aria-hidden="true">·</span>
+              <span>GSTIN: <span className="font-medium text-white">24EFQPS5167K1ZM</span></span>
             </div>
           </div>
 
-          {/* Sourcing Hub Status */}
-          <div className="flex items-center gap-4 text-xs">
-            <span className="hidden sm:inline text-slate-400 text-[11px] font-mono">
-              Port Corridors: <span className="text-slate-200 font-medium">Mundra & Kandla (Western Seaboard)</span>
+          <div className="flex items-center gap-3">
+            <span className="hidden font-mono text-[11px] text-slate-400 lg:inline">
+              Ports: <span className="font-medium text-slate-200">Mundra & Kandla</span>
             </span>
             <button
+              type="button"
               onClick={() => setQuickInquiryOpen(true)}
-              className="text-xs font-semibold text-slate-200 hover:text-white transition-colors border-l border-slate-700 pl-4 cursor-pointer"
+              className="cursor-pointer self-start text-xs font-semibold text-slate-200 transition-colors hover:text-white sm:self-auto"
             >
-              Quick Proposal Desk →
+              <span className="sm:hidden">Proposal desk</span>
+              <span className="hidden sm:inline">Quick Proposal Desk →</span>
             </button>
           </div>
         </div>
@@ -88,14 +88,12 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
 
       {/* 2. Top Bar Contract: Zone 1 (Brand) - Zone 2 (4-5 Nav Links) - Zone 3 (1 Action) */}
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 sm:px-6 lg:px-8 py-3.5">
-          {/* Zone 1: Brand Wordmark (Single cohesive link) */}
-          <Link to="/" className="shrink-0" onClick={() => setMobileMenuOpen(false)}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8">
+          <Link to="/" className="min-w-0 shrink" onClick={() => setMobileMenuOpen(false)}>
             <Logo size="md" variant="full" theme="light" />
           </Link>
 
-          {/* Zone 2: Clean, single-line text navigation links */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <nav className="hidden min-w-0 items-center gap-4 text-sm font-medium text-slate-600 xl:flex xl:gap-6">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -118,7 +116,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center justify-center rounded-lg bg-slate-900 hover:bg-slate-800 text-white px-4.5 py-2 text-xs font-semibold tracking-wide uppercase transition-colors whitespace-nowrap shrink-0 shadow-xs"
+              className="hidden items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-xs transition-colors hover:bg-slate-800 md:inline-flex"
             >
               Request Trade Proposal
             </Link>
@@ -126,7 +124,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex size-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 md:hidden cursor-pointer"
+              className="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 xl:hidden"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -136,7 +134,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="border-b border-slate-200 bg-white px-4 pt-2 pb-6 md:hidden">
+          <div className="border-b border-slate-200 bg-white px-4 pt-2 pb-6 xl:hidden">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
@@ -175,7 +173,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
 
       {/* 4. Corporate Footer */}
       <footer className="bg-slate-950 text-slate-400 border-t border-slate-800">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-6 lg:px-8 md:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:px-8 xl:grid-cols-4 xl:gap-12">
           {/* Column 1: Organization Overview */}
           <div className="space-y-4">
             <Logo size="lg" variant="full" theme="dark" />

@@ -186,7 +186,7 @@ export const Services: React.FC = () => {
 
           {/* Comparison Table */}
           <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
-            <table className="w-full text-left text-xs sm:text-sm">
+            <table className="w-full min-w-[720px] text-left text-xs sm:text-sm">
               <thead className="border-b border-slate-200 bg-slate-100 font-mono text-xs uppercase tracking-wider text-slate-700">
                 <tr>
                   <th className="py-4 px-6">Operational Stage</th>
