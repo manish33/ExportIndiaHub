@@ -61,12 +61,7 @@ function ContainerMark() {
       <rect x="70" y="404" width="720" height="14" fill="#082f49" />
       <path d="M92 182 H250 L168 404 H92 Z" fill="url(#panelShade)" />
       <path d="M250 182 L300 182 L210 404 L168 404 Z" fill="#138808" fillOpacity="0.95" />
-      <text x="304" y="316" fontFamily="Manrope, Arial, sans-serif" fontSize="40" fontWeight="800" letterSpacing="1">
-        <tspan fill="#9a3412">EXPORT</tspan>
-        <tspan fill="#334155"> INDIA </tspan>
-        <tspan fill="#14532d">HUB</tspan>
-      </text>
-      <text x="298" y="308" fontFamily="Manrope, Arial, sans-serif" fontSize="40" fontWeight="800" letterSpacing="1">
+      <text x="318" y="312" fontFamily="Manrope, Arial, sans-serif" fontSize="42" fontWeight="800" letterSpacing="1.5" stroke="#082f49" strokeWidth="1.4" paintOrder="stroke fill">
         <tspan fill="#FF9933">EXPORT</tspan>
         <tspan fill="#FFFFFF"> INDIA </tspan>
         <tspan fill="#22c55e">HUB</tspan>
@@ -96,18 +91,57 @@ export const Home: React.FC = () => {
 
     if (reduce) {
       el.style.transform = "translate3d(0, 0, 0)";
+      el.style.opacity = "1";
       return;
     }
 
+    // Full exit takes about one short scroll, so the box is off to the right
+    // before the next section rises under it. Scroll up runs the same path backward.
+    const travel = 460;
+    let ready = false;
+
+    const place = () => {
+      const progress = Math.min(1, Math.max(0, window.scrollY / travel));
+      el.style.transform = `translate3d(${progress * 120}vw, 0, 0)`;
+      el.style.opacity = progress > 0.82 ? String(Math.max(0, 1 - (progress - 0.82) / 0.18)) : "1";
+    };
+
+    const onScroll = () => {
+      if (!ready) return;
+      place();
+    };
+
+    const finishEntrance = () => {
+      if (ready) return;
+      ready = true;
+      el.style.transition = "none";
+      place();
+    };
+
+    const onEntered = (event: TransitionEvent) => {
+      if (event.propertyName !== "transform") return;
+      finishEntrance();
+    };
+
+    el.addEventListener("transitionend", onEntered);
+    el.style.opacity = "1";
     el.style.transition = "none";
-    el.style.transform = "translate3d(-18%, 0, 0)";
-    const start = requestAnimationFrame(() => {
+    el.style.transform = "translate3d(-110vw, 0, 0)";
+    const frame = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.transition = "transform 1.15s cubic-bezier(0.22, 1, 0.36, 1)";
         el.style.transform = "translate3d(0, 0, 0)";
       });
     });
-    return () => cancelAnimationFrame(start);
+    const fallback = window.setTimeout(finishEntrance, 1300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(fallback);
+      el.removeEventListener("transitionend", onEntered);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const handleCopy = (id: string, text: string) => {
