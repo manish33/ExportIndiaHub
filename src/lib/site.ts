@@ -207,7 +207,7 @@ export const COMMODITIES = [
       "CNC/VMC Turned Components",
       "Bearings, Bushings & Industrial Gears"
     ],
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    image: "/images/engineering.jpg"
   },
   {
     category: "Brass & Hardware Architectural Products",
@@ -219,7 +219,7 @@ export const COMMODITIES = [
       "Gas Fittings, Valves & Sanitary Brassware",
       "Electrical Wiring Accessories & Neutral Links"
     ],
-    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80"
+    image: "/images/brass.jpg"
   },
   {
     category: "Agricultural Commodities & Spices",
@@ -231,7 +231,7 @@ export const COMMODITIES = [
       "Coriander Seeds, Fennel Seeds & Fenugreek",
       "Raw Cotton Bales (Shankar-6) & Cotton Yarn"
     ],
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80"
+    image: "/images/spices.jpg"
   },
   {
     category: "Ceramic Surfaces & Sanitaryware",
@@ -243,19 +243,43 @@ export const COMMODITIES = [
       "Water Closets, Counter Wash Basins & Sanitaryware",
       "High-pressure Industrial Porcelain Tiles"
     ],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    image: "/images/ceramics.jpg"
   },
   {
-    category: "Commercial Cookware & Stainless Steel",
-    cluster: "Rajkot Kitchenware Hub",
+    category: "Pharmaceuticals & Surgical Products",
+    cluster: "Gujarat Pharma & Medical Devices Belt",
     items: [
-      "Stainless Steel Commercial Kitchen Utensils",
-      "Heavy-gauge Aluminium Pressure Cookers",
-      "Non-stick PTFE / Ceramic Cookware Sets",
-      "Rotary Flour Mills & Domestic Food Processing Machines",
-      "Commercial Tableware & Hotelware"
+      "Tablets, Capsules and Oral Liquid Formulations",
+      "Surgical Gloves, Syringes and Hospital Disposables",
+      "Sutures, Bandages and Wound-care Products",
+      "Diagnostic Kits and Laboratory Consumables",
+      "Orthopaedic Supports and Surgical Instruments"
     ],
-    image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+    image: "/images/pharma.jpg"
+  },
+  {
+    category: "Ayurvedic Products & Remedies",
+    cluster: "Gujarat Herbal Processing",
+    items: [
+      "Ayurvedic Tablets, Churnas and Herbal Extracts",
+      "Ashwagandha, Turmeric and Triphala Preparations",
+      "Medicated Oils, Balms and Classical Remedies",
+      "Herbal Juices and Wellness Supplements",
+      "Ayurvedic Soaps, Hair Oils and Personal Care"
+    ],
+    image: "/images/ayurveda.jpg"
+  },
+  {
+    category: "Imitation Jewellery & Gems",
+    cluster: "Rajkot Fashion Jewellery Cluster",
+    items: [
+      "Gold-tone and Silver-tone Fashion Jewellery",
+      "Necklaces, Earrings, Bangles and Bridal Sets",
+      "Cubic Zirconia and Coloured Imitation Stones",
+      "Beads, Chains and Costume Accessories",
+      "Retail-ready Jewellery Packed for Export"
+    ],
+    image: "/images/jewellery.jpg"
   }
 ];
 

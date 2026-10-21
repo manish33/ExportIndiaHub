@@ -37,9 +37,9 @@ function ContainerMark() {
     <svg viewBox="0 0 860 520" className="h-auto w-full drop-shadow-2xl" role="img" aria-label="Shipping container">
       <defs>
         <pattern id="corrugation" width="16" height="16" patternUnits="userSpaceOnUse">
-          <rect width="16" height="280" fill="#1c1c1c" />
-          <rect width="3" height="280" fill="#2c2c2c" />
-          <rect x="7" width="5" height="280" fill="#101010" />
+          <rect width="16" height="280" fill="#0c4a6e" />
+          <rect width="3" height="280" fill="#38bdf8" />
+          <rect x="7" width="5" height="280" fill="#082f49" />
         </pattern>
         <linearGradient id="panelShade" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#FF9933" />
@@ -50,31 +50,36 @@ function ContainerMark() {
           <stop offset="1" stopColor="#0b5c24" />
         </linearGradient>
       </defs>
-      <path d="M430 8 L250 150" stroke="#cfcfcf" strokeWidth="3" />
-      <path d="M430 8 L610 150" stroke="#cfcfcf" strokeWidth="3" />
-      <path d="M418 0 h24 v28 h-24 z" fill="#d7a21a" />
-      <path d="M424 28 h12 v18 h-12 z" fill="#b8860b" />
-      <circle cx="430" cy="58" r="8" fill="none" stroke="#e8e8e8" strokeWidth="3" />
-      <path d="M430 66 V138" stroke="#e8e8e8" strokeWidth="3" />
-      <rect x="70" y="168" width="720" height="250" rx="6" fill="url(#corrugation)" stroke="#3a3a3a" />
-      <rect x="70" y="168" width="720" height="14" fill="#2a2a2a" />
-      <rect x="70" y="404" width="720" height="14" fill="#111" />
+      <path d="M430 8 L250 150" stroke="#e0f2fe" strokeWidth="3" />
+      <path d="M430 8 L610 150" stroke="#e0f2fe" strokeWidth="3" />
+      <path d="M418 0 h24 v28 h-24 z" fill="#FF9933" />
+      <path d="M424 28 h12 v18 h-12 z" fill="#c2410c" />
+      <circle cx="430" cy="58" r="8" fill="none" stroke="#f8fafc" strokeWidth="3" />
+      <path d="M430 66 V138" stroke="#f8fafc" strokeWidth="3" />
+      <rect x="70" y="168" width="720" height="250" rx="6" fill="url(#corrugation)" stroke="#7dd3fc" />
+      <rect x="70" y="168" width="720" height="14" fill="#0369a1" />
+      <rect x="70" y="404" width="720" height="14" fill="#082f49" />
       <path d="M92 182 H250 L168 404 H92 Z" fill="url(#panelShade)" />
       <path d="M250 182 L300 182 L210 404 L168 404 Z" fill="#138808" fillOpacity="0.95" />
-      <text x="300" y="310" fontFamily="Manrope, Arial, sans-serif" fontSize="34" fontWeight="700" letterSpacing="1.5">
+      <text x="304" y="316" fontFamily="Manrope, Arial, sans-serif" fontSize="40" fontWeight="800" letterSpacing="1">
+        <tspan fill="#9a3412">EXPORT</tspan>
+        <tspan fill="#334155"> INDIA </tspan>
+        <tspan fill="#14532d">HUB</tspan>
+      </text>
+      <text x="298" y="308" fontFamily="Manrope, Arial, sans-serif" fontSize="40" fontWeight="800" letterSpacing="1">
         <tspan fill="#FF9933">EXPORT</tspan>
         <tspan fill="#FFFFFF"> INDIA </tspan>
-        <tspan fill="#138808">HUB</tspan>
+        <tspan fill="#22c55e">HUB</tspan>
       </text>
-      {[70, 760].map((x) => (
+          {[70, 760].map((x) => (
         <g key={x}>
-          <rect x={x} y="168" width="22" height="22" fill="#3a3a3a" />
-          <rect x={x + 6} y="174" width="10" height="10" fill="#111" />
-          <rect x={x} y="396" width="22" height="22" fill="#3a3a3a" />
-          <rect x={x + 6} y="402" width="10" height="10" fill="#111" />
+          <rect x={x} y="168" width="22" height="22" fill="#075985" />
+          <rect x={x + 6} y="174" width="10" height="10" fill="#e0f2fe" />
+          <rect x={x} y="396" width="22" height="22" fill="#075985" />
+          <rect x={x + 6} y="402" width="10" height="10" fill="#e0f2fe" />
         </g>
       ))}
-      <ellipse cx="430" cy="470" rx="280" ry="16" fill="black" fillOpacity="0.45" />
+      <ellipse cx="430" cy="470" rx="280" ry="16" fill="#082f49" fillOpacity="0.35" />
     </svg>
   );
 }
@@ -88,51 +93,21 @@ export const Home: React.FC = () => {
     const el = containerRef.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let entered = reduce;
-    let frame = 0;
-
-    const progressFor = () => Math.min(1, Math.max(0, window.scrollY / 460));
-
-    const place = (progress: number) => {
-      el.style.transform = `translate3d(calc(-50% + ${progress * 120}vw), 0, 0)`;
-      el.style.opacity = progress > 0.82 ? String(Math.max(0, 1 - (progress - 0.82) / 0.18)) : "1";
-    };
-
-    const onScroll = () => {
-      if (!entered) return;
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => place(progressFor()));
-    };
 
     if (reduce) {
-      place(progressFor());
-      window.addEventListener("scroll", onScroll, { passive: true });
-      return () => window.removeEventListener("scroll", onScroll);
+      el.style.transform = "translate3d(0, 0, 0)";
+      return;
     }
 
     el.style.transition = "none";
-    el.style.transform = "translate3d(calc(-50% - 120vw), 0, 0)";
+    el.style.transform = "translate3d(-18%, 0, 0)";
     const start = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.transition = "transform 1.15s cubic-bezier(0.22, 1, 0.36, 1)";
-        el.style.transform = "translate3d(-50%, 0, 0)";
+        el.style.transform = "translate3d(0, 0, 0)";
       });
     });
-    const onEnd = (event: TransitionEvent) => {
-      if (event.propertyName !== "transform") return;
-      entered = true;
-      el.style.transition = "none";
-      place(progressFor());
-      el.removeEventListener("transitionend", onEnd);
-    };
-    el.addEventListener("transitionend", onEnd);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(start);
-      cancelAnimationFrame(frame);
-      el.removeEventListener("transitionend", onEnd);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => cancelAnimationFrame(start);
   }, []);
 
   const handleCopy = (id: string, text: string) => {
@@ -144,24 +119,29 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-0">
       {/* 1. Executive Hero Section */}
-      <section ref={firstPageRef} className="relative flex min-h-[100svh] flex-col overflow-hidden border-b border-white/10 bg-[#070707] text-white">
+      <section ref={firstPageRef} className="relative flex min-h-[100svh] flex-col overflow-hidden border-b border-white/20 text-white">
         <div className="pointer-events-none absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=2000&q=80"
+            src="/images/ocean-sky.jpg"
             alt=""
-            className="h-full w-full object-cover grayscale opacity-40"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-[#070707]/72 to-[#070707]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-sky-950/20 via-cyan-950/25 to-[#063044]/75" />
         </div>
 
         <div className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center px-4 pb-8 pt-24 sm:px-6">
-          <div className="mx-auto w-[min(820px,94vw)]" style={{ aspectRatio: "860 / 520" }} />
-          <div
-            ref={containerRef}
-            className="pointer-events-none fixed left-1/2 top-[18vh] z-20 w-[min(820px,94vw)] will-change-transform"
-            style={{ transform: "translate3d(calc(-50% - 120vw), 0, 0)" }}
-          >
-            <ContainerMark />
+          <img
+            src="/brand/logo.png"
+            alt="Export India Hub"
+            className="mx-auto mb-1 h-auto w-[min(300px,70vw)] drop-shadow-2xl"
+          />
+          <div className="relative mx-auto w-[min(680px,92vw)]" style={{ aspectRatio: "860 / 520" }}>
+            <div
+              ref={containerRef}
+              className="pointer-events-none absolute inset-0 will-change-transform"
+            >
+              <ContainerMark />
+            </div>
           </div>
 
           <div className="mx-auto mt-8 grid w-full max-w-4xl gap-4 sm:grid-cols-3">
@@ -170,7 +150,7 @@ export const Home: React.FC = () => {
               { label: "Kandla Port", value: "210 km", note: "Highway from Rajkot" },
               { label: "Export desk", value: "24h", note: "RFQ reply" }
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-white/10 bg-black/35 px-5 py-4 backdrop-blur-sm">
+              <div key={item.label} className="rounded-2xl border border-white/25 bg-[#063044]/55 px-5 py-4 backdrop-blur-sm">
                 <p className="text-xs uppercase tracking-[0.16em] text-white/50">{item.label}</p>
                 <p className="mt-2 text-2xl font-semibold text-white">{item.value}</p>
                 <p className="mt-1 text-sm text-white/60">{item.note}</p>
@@ -180,7 +160,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-b border-white/10 bg-[#070707] text-white">
+      <section className="relative overflow-hidden border-b border-white/10 bg-[#063044]/85 text-white">
         <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:px-8 lg:py-24">
           {/* Left Column: Proposition */}
           <div className="space-y-6">
@@ -294,46 +274,34 @@ export const Home: React.FC = () => {
       {/* 2. Statistical Proof Strip */}
       <section aria-label="Trade credentials" className="border-b border-slate-800 bg-slate-900 text-white">
         <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-px bg-slate-800 sm:grid-cols-2 xl:grid-cols-4">
-          {STATS.map((stat) => {
-            const longValue = stat.value.length > 8;
-            return (
-              <li
-                key={stat.label}
-                className="flex min-w-0 items-center gap-4 bg-slate-900 px-5 py-5 sm:px-6 xl:block"
-              >
-                <p
-                  className={`shrink-0 font-heading font-extrabold leading-none tracking-tight text-white ${
-                    longValue ? "text-xl sm:text-2xl" : "text-3xl"
-                  }`}
-                >
-                  {stat.value}
-                </p>
-                <div className="min-w-0 xl:mt-3">
-                  <p className="text-sm font-semibold leading-snug text-slate-50">
-                    {stat.label}
-                  </p>
-                  <p className="mt-1 text-sm leading-snug text-slate-400">
-                    {stat.sub}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
+          {STATS.map((stat) => (
+            <li key={stat.label} className="min-w-0 bg-slate-900 px-5 py-5 sm:px-6">
+              <p className="font-heading text-2xl font-extrabold leading-tight tracking-tight text-balance text-white sm:text-3xl">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-snug text-slate-50">
+                {stat.label}
+              </p>
+              <p className="mt-1 text-sm leading-snug text-slate-400">
+                {stat.sub}
+              </p>
+            </li>
+          ))}
         </ul>
 
-        <ul className="flex flex-col gap-1.5 border-t border-slate-800 bg-slate-950/80 px-5 py-3 font-mono text-[11px] leading-relaxed tracking-wide text-slate-400 md:hidden">
+        <ul className="flex flex-col gap-1.5 border-t border-slate-800 bg-slate-950 px-5 py-3 font-mono text-[11px] leading-relaxed tracking-wide text-slate-400 md:hidden">
           {TICKER_ITEMS.map((item) => (
-            <li key={item} className="min-w-0">
+            <li key={item} className="min-w-0 break-words">
               {item}
             </li>
           ))}
         </ul>
-        <div className="hidden overflow-hidden border-t border-slate-800 bg-slate-950/80 py-2.5 md:block" aria-hidden="true">
-          <div className="animate-marquee flex-nowrap gap-8 font-mono text-[11px] tracking-wider text-slate-400">
+        <div className="hidden overflow-hidden border-t border-slate-800 bg-slate-950 py-2.5 md:block" aria-hidden="true">
+          <div className="animate-marquee gap-8 font-mono text-[11px] tracking-wider text-slate-400">
             {TICKER_ITEMS.concat(TICKER_ITEMS).map((item, idx) => (
               <span key={idx} className="flex shrink-0 items-center gap-8 whitespace-nowrap">
                 <span>{item}</span>
-                <span className="text-white/65">·</span>
+                <span className="text-white/65" aria-hidden="true">·</span>
               </span>
             ))}
           </div>

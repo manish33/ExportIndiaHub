@@ -47,7 +47,7 @@ html {
 }
 
 body {
-  background: #070707;
+  background: #063044 url("/images/ocean-sky.jpg") center / cover fixed;
   color: #f4f4f4;
   font-family: Manrope, Arial, Helvetica, sans-serif;
 }

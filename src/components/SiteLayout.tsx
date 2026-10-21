@@ -41,7 +41,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#070707] text-[#f4f4f4] font-sans selection:bg-white selection:text-black">
+    <div className="flex min-h-screen flex-col bg-[#063044]/80 text-[#f4f4f4] font-sans selection:bg-white selection:text-black">
       {/* 1. Quiet Utility Bar */}
       <div className="bg-slate-900 text-slate-300 border-b border-slate-800">
         <div className="mx-auto flex max-w-7xl flex-col gap-1.5 px-4 py-2 text-xs sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
       </div>
 
       {/* 2. Top Bar Contract: Zone 1 (Brand) - Zone 2 (4-5 Nav Links) - Zone 3 (1 Action) */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#070707]/90 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-white/20 bg-[#063044]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8">
           <Link to="/" className="min-w-0 shrink" onClick={() => setMobileMenuOpen(false)}>
             <Logo size="md" variant="full" theme="dark" />
@@ -132,7 +132,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-b border-white/10 bg-[#070707] px-4 pt-2 pb-6 xl:hidden">
+          <div className="border-b border-white/20 bg-[#063044] px-4 pt-2 pb-6 xl:hidden">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
@@ -170,7 +170,7 @@ export const SiteLayout: React.FC<SiteLayoutProps> = ({ children }) => {
       <main className="flex-1">{children}</main>
 
       {/* 4. Corporate Footer */}
-      <footer className="bg-slate-950 text-slate-400 border-t border-slate-800">
+      <footer className="border-t border-sky-900/40 bg-[#04283a]/90 text-slate-300">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:px-8 xl:grid-cols-4 xl:gap-12">
           {/* Column 1: Organization Overview */}
           <div className="space-y-4">
